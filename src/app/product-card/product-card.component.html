@@ -1,0 +1,52 @@
+<div class="bg-white rounded-xl shadow-md p-6 m-6 w-96">
+    <div class="flex justify-between items-center">
+        <div [routerLink]="['/restaurant', product.restaurant]">
+            <a class="text-lg font-semibold text-gray-500" [routerLink]="['/restaurant', product.restaurant]">
+                By {{product.restaurant}}
+            </a>
+
+            <div class="flex items-center text-gray-500 text-sm space-x-1">
+                <span>&#9733; 4.6</span>
+                <span>&middot;</span>
+                <span>30-35 MINS</span>
+            </div>
+        </div>
+        <div>
+            <button class="text-gray-500" [routerLink]="['/restaurant', product.restaurant]">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M13.2307 5.53999C12.9769 5.28615 12.5653 5.28615 12.3115 5.53999C12.0576 5.79383 12.0576 6.20539 12.3115 6.45923L17.2019 11.3496L5.39414 11.3496C5.03516 11.3496 4.74414 11.6406 4.74414 11.9996C4.74414 12.3586 5.03516 12.6496 5.39414 12.6496L17.2019 12.6496L12.3115 17.54C12.0576 17.7938 12.0576 18.2054 12.3115 18.4592C12.5653 18.7131 12.9769 18.7131 13.2307 18.4592L18.949 12.741C19.3584 12.3315 19.3584 11.6677 18.949 11.2583L13.2307 5.53999Z"
+                        fill="#868891"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <hr class="my-3">
+    <div class="flex justify-between items-start">
+        <div class="w-56">
+            <p class="text-xl font-semibold text-gray-700 truncate">{{product.name}}</p>
+            <p class="text-xl text-gray-900">&#8377;{{product.price}}</p>
+        </div>
+        <div class="relative">
+            <img [src]="product.imageUrl" alt="food image" class="w-32 h-32 rounded-md object-cover">
+            <button
+                class="absolute top-24 right-8 bg-white text-green-700 px-3 py-1.5 shadow-xl rounded-md text-sm font-semibold"
+                (click)="addToCart(product)">
+                {{ isProductInCart(product) ? 'Added' : 'Add' }}
+            </button>
+        </div>
+        <div *ngIf="showPopUp" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+                <h2 class="text-xl font-bold mb-4">Items already in cart</h2>
+                <p class="text-gray-700 mb-6">Your cart contains items from another restaurant. Would you like to reset
+                    your cart for adding items from this restaurant?</p>
+                <div class="flex justify-end space-x-4">
+                    <button (click)="noCancel()" class="bg-white text-gray-700 px-4 py-2 border border-width-6"
+                        style="color: #68b444; border-color: #68b444; border-width: 2px;">NO, CANCEL</button>
+                    <button (click)="yesStartAfresh()" class="text-white px-4 py-2"
+                        style="background-color: #68b444;">YES, START AFRESH</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

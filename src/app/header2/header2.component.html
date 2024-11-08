@@ -1,0 +1,104 @@
+<div class="px-4 py-4 flex items-center justify-between" style="background-color: #ff5404;">
+
+    <div class="flex items-center space-x-4">
+        <a routerLink="/" class="flex items-center space-x-2 cursor-pointer">
+            <svg class="VXJlj" viewBox="0 0 61 61" height="40" width="40">
+                <g clip-path="url(#a)">
+                    <path fill="#FF5200"
+                        d="M.32 30.5c0-12.966 0-19.446 3.498-23.868a16.086 16.086 0 0 1 2.634-2.634C10.868.5 17.354.5 30.32.5s19.446 0 23.868 3.498c.978.774 1.86 1.656 2.634 2.634C60.32 11.048 60.32 17.534 60.32 30.5s0 19.446-3.498 23.868a16.086 16.086 0 0 1-2.634 2.634C49.772 60.5 43.286 60.5 30.32 60.5s-19.446 0-23.868-3.498a16.086 16.086 0 0 1-2.634-2.634C.32 49.952.32 43.466.32 30.5Z">
+                    </path>
+                    <path fill="#fff" fill-rule="evenodd"
+                        d="M32.317 24.065v-6.216a.735.735 0 0 0-.732-.732.735.735 0 0 0-.732.732v7.302c0 .414.336.744.744.744h.714c10.374 0 11.454.54 10.806 2.73-.03.108-.066.21-.102.324-.006.024-.012.048-.018.066-2.724 8.214-10.092 18.492-12.27 21.432a.764.764 0 0 1-1.23 0c-1.314-1.776-4.53-6.24-7.464-11.304-.198-.462-.294-1.542 2.964-1.542h3.984c.222 0 .402.18.402.402v3.216c0 .384.282.738.666.768a.73.73 0 0 0 .582-.216.701.701 0 0 0 .216-.516v-4.362a.76.76 0 0 0-.756-.756h-8.052c-1.404 0-2.256-1.2-2.814-2.292-1.752-3.672-3.006-7.296-3.006-10.152 0-7.314 5.832-13.896 13.884-13.896 7.17 0 12.6 5.214 13.704 11.52.006.054.048.294.054.342.288 3.096-7.788 2.742-11.184 2.76a.357.357 0 0 1-.36-.36v.006Z"
+                        clip-rule="evenodd"></path>
+                </g>
+                <defs>
+                    <clipPath id="a">
+                        <path fill="#fff" d="M.32.5h60v60h-60z"></path>
+                    </clipPath>
+                </defs>
+            </svg>
+            <span class="text-white font-bold text-lg">Swiggy</span>
+        </a>
+        <a href="#" class="text-white hover:text-black border-b border-white border-opacity-200">
+            {{ address }}
+        </a>
+    </div>
+
+
+    <button class="block sm:hidden text-white" (click)="toggleMobileMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+            <path fill-rule="evenodd"
+                d="M4 5h16a1 1 0 010 2H4a1 1 0 110-2zM4 11h16a1 1 0 010 2H4a1 1 0 110-2zM4 17h16a1 1 0 010 2H4a1 1 0 110-2z"
+                clip-rule="evenodd" />
+        </svg>
+    </button>
+
+
+
+    <div class="hidden sm:flex items-center space-x-6 text-white text-sm font-semibold">
+        <a href="#" class="hover:text-black">Swiggy Corporate</a>
+        <a href="#" class="hover:text-black">Partner with us</a>
+        <a href="#" class="px-4 py-2 border border-white rounded-md hover:bg-black">Get the App</a>
+
+
+        <div *ngIf="isLoggedIn()" class="relative">
+            <div class="flex items-center gap-2 cursor-pointer" (click)="toggleDropdown()">
+                <svg class="ppAwf" viewBox="6 0 12 24" height="19" width="18" fill="#686b78">
+                    <path
+                        d="M11.9923172,11.2463768 C8.81761115,11.2463768 6.24400341,8.72878961 6.24400341,5.62318841 C6.24400341,2.5175872 8.81761115,0 11.9923172,0 C15.1670232,0 17.740631,2.5175872 17.740631,5.62318841 C17.740631,8.72878961 15.1670232,11.2463768 11.9923172,11.2463768 Z M11.9923172,9.27536232 C14.0542397,9.27536232 15.7257581,7.64022836 15.7257581,5.62318841 C15.7257581,3.60614845 14.0542397,1.97101449 11.9923172,1.97101449 C9.93039471,1.97101449 8.25887628,3.60614845 8.25887628,5.62318841 C8.25887628,7.64022836 9.93039471,9.27536232 11.9923172,9.27536232 Z M24,24 L0,24 L1.21786143,19.7101449 L2.38352552,15.6939891 C2.85911209,14.0398226 4.59284263,12.7536232 6.3530098,12.7536232 L17.6316246,12.7536232 C19.3874139,12.7536232 21.1256928,14.0404157 21.6011089,15.6939891 L22.9903494,20.5259906 C23.0204168,20.63057 23.0450458,20.7352884 23.0641579,20.8398867 L24,24 Z">
+                    </path>
+                </svg>
+                <span>{{ username }}</span>
+            </div>
+            <div *ngIf="showDropdown" class="absolute right-0 mt-2 w-32 bg-white rounded-md shadow-lg">
+                <button (click)="logout()" class="w-full text-left px-4 py-2 text-gray-700">Logout</button>
+            </div>
+        </div>
+
+
+        <div class="flex gap-1">
+            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 109.57"
+                width="24" height="24">
+                <path class="cls-1"
+                    d="M94.26,44.46A26.88,26.88,0,1,1,67.38,71.34,26.88,26.88,0,0,1,94.26,44.46ZM65.45,19.57l-4.52,4.74-4.52-4.43C49,12.58,43.4,7.08,31.89,6.93L30.46,7A25.75,25.75,0,0,0,13.74,13.6,22.58,22.58,0,0,0,6.63,30.17l0,1.37c.69,19.27,19.13,36.08,34.42,50,3,2.69,5.78,5.27,8.49,7.88l11.27,10.85,5.91-5.87c.68.8,1.39,1.58,2.13,2.32l0,0c.82.83,1.69,1.61,2.59,2.36l-10.59,10.5L45,94.22c-2.49-2.39-5.37-5-8.37-7.75C20.37,71.68.81,53.85,0,31.77l0-1.68A29.12,29.12,0,0,1,9.21,8.73a32.42,32.42,0,0,1,21-8.42H32c14,.18,20.45,6.34,28.8,14.55C67.66,7.54,73.39,1.55,85,.21a33.88,33.88,0,0,1,19,3.45,35.14,35.14,0,0,1,12.51,10.48,31.53,31.53,0,0,1,6.1,15.18,31,31,0,0,1-2.86,16.81l-.17-.18a36.18,36.18,0,0,0-5.14-4.27,24.26,24.26,0,0,0,1.57-11.6,25,25,0,0,0-4.83-12,28.62,28.62,0,0,0-10.14-8.5A27.27,27.27,0,0,0,85.79,6.82C76.47,7.89,71.5,13.17,65.45,19.57ZM90.29,60a3.85,3.85,0,0,1,.31-1.51l0-.06a3.92,3.92,0,0,1,.83-1.23,4,4,0,0,1,2.78-1.16h0a4.23,4.23,0,0,1,1.51.3,4.16,4.16,0,0,1,1.29.86,3.87,3.87,0,0,1,.85,1.28l0,.07A4.18,4.18,0,0,1,98.22,60V68h7.93a4,4,0,0,1,1.51.3,3.94,3.94,0,0,1,1.29.86,4,4,0,0,1,.85,1.28l0,.06a4,4,0,0,1,.28,1.38V72a3.82,3.82,0,0,1-.3,1.44,4,4,0,0,1-.86,1.29,3.88,3.88,0,0,1-1.27.85l-.07,0a4.23,4.23,0,0,1-1.43.28h-8v7.93a4,4,0,0,1-.3,1.51,4.11,4.11,0,0,1-.86,1.29l-.08.07a3.88,3.88,0,0,1-1.2.78l-.07,0a4.18,4.18,0,0,1-1.43.28h0a4,4,0,0,1-1.51-.3,3.94,3.94,0,0,1-1.29-.86,3.73,3.73,0,0,1-.85-1.27,4.05,4.05,0,0,1-.31-1.5V75.9H82.37a3.85,3.85,0,0,1-1.51-.31l-.06,0a3.92,3.92,0,0,1-1.23-.83,3.87,3.87,0,0,1-.85-1.28l0-.07A4.23,4.23,0,0,1,78.41,72v0a3.8,3.8,0,0,1,.3-1.51A3.95,3.95,0,0,1,82.34,68h8V60Z" />
+            </svg>
+            <a href="/favourites" class="hover:text-black">Favourites</a>
+        </div>
+
+
+        <div class="flex items-center gap-2 relative">
+            <div class="relative">
+                <svg class="ppAwf PV4Mz" viewBox="-1 0 37 32" height="20" width="20" fill="#686b78">
+                    <path d="M4.438 0l-2.598 5.11-1.84 26.124h34.909l-1.906-26.124-2.597-5.11z"></path>
+                </svg>
+                <span class="absolute top-0 left-0 text-md text-white w-4 h-4 flex items-center justify-center">
+                    {{ cartCount }}
+                </span>
+            </div>
+            <a href="/cart" class="hover:text-black">Cart</a>
+        </div>
+
+
+        <button *ngIf="!isLoggedIn()" (click)="doToggleLogin()" class="px-4 py-2 bg-black rounded-md hover:bg-gray-800">
+            Sign in
+        </button>
+    </div>
+</div>
+
+
+<div *ngIf="showMobileMenu" class="sm:hidden bg-white text-black space-y-4 px-10 py-2">
+    <a href="#" class="block hover:text-gray-700">Swiggy Corporate</a>
+    <a href="#" class="block hover:text-gray-700">Partner with us</a>
+    <a href="#" class="block px-4 py-2 border border-black rounded-md text-center hover:bg-black hover:text-white">Get
+        the App</a>
+    <a *ngIf="isLoggedIn()" href="/favourites" class="block hover:text-gray-700">Favourites</a>
+    <a href="/cart" class="block hover:text-gray-700">Cart ({{ cartCount }})</a>
+    <button *ngIf="!isLoggedIn()" (click)="doToggleLogin()"
+        class="w-full px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800">
+        Sign in
+    </button>
+    <button *ngIf="isLoggedIn()" (click)="logout()"
+        class="w-full px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800">
+        Logout
+    </button>
+</div>

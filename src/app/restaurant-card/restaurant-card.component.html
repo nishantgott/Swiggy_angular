@@ -1,0 +1,72 @@
+<a [routerLink]="['/restaurant', restaurant.name]" class="block rounded-lg overflow-hidden shadow-lg bg-white"
+    style="width: 300px; position: relative;">
+
+    <button (click)="addToFavourites($event, restaurant)"
+        class="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md z-50 border border-gray-300 hover:bg-gray-100">
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.88 109.57" width="24"
+            height="24">
+            <path class="cls-1"
+                d="M94.26,44.46A26.88,26.88,0,1,1,67.38,71.34,26.88,26.88,0,0,1,94.26,44.46ZM65.45,19.57l-4.52,4.74-4.52-4.43C49,12.58,43.4,7.08,31.89,6.93L30.46,7A25.75,25.75,0,0,0,13.74,13.6,22.58,22.58,0,0,0,6.63,30.17l0,1.37c.69,19.27,19.13,36.08,34.42,50,3,2.69,5.78,5.27,8.49,7.88l11.27,10.85,5.91-5.87c.68.8,1.39,1.58,2.13,2.32l0,0c.82.83,1.69,1.61,2.59,2.36l-10.59,10.5L45,94.22c-2.49-2.39-5.37-5-8.37-7.75C20.37,71.68.81,53.85,0,31.77l0-1.68A29.12,29.12,0,0,1,9.21,8.73a32.42,32.42,0,0,1,21-8.42H32c14,.18,20.45,6.34,28.8,14.55C67.66,7.54,73.39,1.55,85,.21a33.88,33.88,0,0,1,19,3.45,35.14,35.14,0,0,1,12.51,10.48,31.53,31.53,0,0,1,6.1,15.18,31,31,0,0,1-2.86,16.81l-.17-.18a36.18,36.18,0,0,0-5.14-4.27,24.26,24.26,0,0,0,1.57-11.6,25,25,0,0,0-4.83-12,28.62,28.62,0,0,0-10.14-8.5A27.27,27.27,0,0,0,85.79,6.82C76.47,7.89,71.5,13.17,65.45,19.57ZM90.29,60a3.85,3.85,0,0,1,.31-1.51l0-.06a3.92,3.92,0,0,1,.83-1.23,4,4,0,0,1,2.78-1.16h0a4.23,4.23,0,0,1,1.51.3,4.16,4.16,0,0,1,1.29.86,3.87,3.87,0,0,1,.85,1.28l0,.07A4.18,4.18,0,0,1,98.22,60V68h7.93a4,4,0,0,1,1.51.3,3.94,3.94,0,0,1,1.29.86,4,4,0,0,1,.85,1.28l0,.06a4,4,0,0,1,.28,1.38V72a3.82,3.82,0,0,1-.3,1.44,4,4,0,0,1-.86,1.29,3.88,3.88,0,0,1-1.27.85l-.07,0a4.23,4.23,0,0,1-1.43.28h-8v7.93a4,4,0,0,1-.3,1.51,4.11,4.11,0,0,1-.86,1.29l-.08.07a3.88,3.88,0,0,1-1.2.78l-.07,0a4.18,4.18,0,0,1-1.43.28h0a4,4,0,0,1-1.51-.3,3.94,3.94,0,0,1-1.29-.86,3.73,3.73,0,0,1-.85-1.27,4.05,4.05,0,0,1-.31-1.5V75.9H82.37a3.85,3.85,0,0,1-1.51-.31l-.06,0a3.92,3.92,0,0,1-1.23-.83,3.87,3.87,0,0,1-.85-1.28l0-.07A4.23,4.23,0,0,1,78.41,72v0a3.8,3.8,0,0,1,.3-1.51A3.95,3.95,0,0,1,82.34,68h8V60Z" />
+        </svg>
+    </button>
+
+
+    <div class="relative">
+        <img class="w-full h-48 object-cover"
+            [src]="restaurant.imageUrl || 'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/o7bpk54rns2rygy39myq'"
+            alt="Restaurant Image">
+        <div
+            class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 flex justify-between items-center">
+            <h2 class="text-lg font-semibold">{{ restaurant.name }}</h2>
+            <div class="flex gap-x-2 text-white rounded-full px-2 py-1 text-xs font-semibold">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" role="img" aria-hidden="true">
+                    <circle cx="10" cy="10" r="9" fill="url(#StoreRating20_svg__paint0_linear_32982_71567)"></circle>
+                    <path
+                        d="M10.0816 12.865C10.0312 12.8353 9.96876 12.8353 9.91839 12.865L7.31647 14.3968C6.93482 14.6214 6.47106 14.2757 6.57745 13.8458L7.27568 11.0245C7.29055 10.9644 7.26965 10.9012 7.22195 10.8618L4.95521 8.99028C4.60833 8.70388 4.78653 8.14085 5.23502 8.10619L8.23448 7.87442C8.29403 7.86982 8.34612 7.83261 8.36979 7.77777L9.54092 5.06385C9.71462 4.66132 10.2854 4.66132 10.4591 5.06385L11.6302 7.77777C11.6539 7.83261 11.706 7.86982 11.7655 7.87442L14.765 8.10619C15.2135 8.14085 15.3917 8.70388 15.0448 8.99028L12.7781 10.8618C12.7303 10.9012 12.7095 10.9644 12.7243 11.0245L13.4225 13.8458C13.5289 14.2757 13.0652 14.6214 12.6835 14.3968L10.0816 12.865Z"
+                        fill="white"></path>
+                    <defs>
+                        <linearGradient id="StoreRating20_svg__paint0_linear_32982_71567" x1="10" y1="1" x2="10" y2="19"
+                            gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#21973B"></stop>
+                            <stop offset="1" stop-color="#128540"></stop>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                {{ restaurant.rating }}
+            </div>
+        </div>
+    </div>
+    <div class="p-4">
+        <div class="flex justify-between text-sm text-gray-600">
+            <p>{{ restaurant.cuisine }} </p>
+            <p>{{ restaurant.price }}</p>
+        </div>
+        <div class="flex justify-between text-sm text-gray-600 mt-1">
+            <p>{{ restaurant.location }}</p>
+            <p>4.5 km</p>
+        </div>
+        <div class="mt-2">
+            <button class="text-xs bg-gray-200 py-1 px-2 rounded-lg flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Table booking
+            </button>
+        </div>
+        <div class="mt-3 text-white text-xs font-semibold py-2 px-3 rounded-lg" style="background-color: #20a474;">
+            <p>Flat 35% off on pre-booking</p>
+        </div>
+        <div class="mt-2 text-xs py-2 px-3 rounded-lg" style="background-color: #d0fce4; color:#20a474 ;">
+            <p>Up to 15% off with bank offers</p>
+        </div>
+    </div>
+</a>
+
+<div *ngIf="showAlert"
+    class="fixed top-0 left-0 w-full flex justify-center z-50 transition-transform duration-500 ease-in-out"
+    [ngClass]="{'translate-y-0': showAlert, '-translate-y-full': !showAlert}">
+    <div class="bg-green-500 text-white px-4 py-2 rounded shadow-lg">
+        <p>{{ alertMessage }}</p>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container mx-auto mt-8 mb-8 mx-auto">
+    <h2 class="text-xl font-bold mb-4 mx-5">Discover best restaurants on Dineout</h2>
+
+    <div class="relative">
+        <button (click)="scrollLeft()" class="absolute right-16 z-10 bg-white p-2 rounded-full shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button (click)="scrollRight()" class="absolute right-3 z-10 bg-white p-2 rounded-full shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button>
+
+        <div #scrollContainer class="flex overflow-x-scroll gap-x-6 hide-scrollbar scroll-smooth pb-5">
+            <app-restaurant-card *ngFor="let restaurant of restaurantList"
+                [restaurant]="restaurant"></app-restaurant-card>
+        </div>
+
+    </div>
+</div>

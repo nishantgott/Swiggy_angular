@@ -1,0 +1,85 @@
+<div class="flex flex-col gap-5 justify-center items-center bg-gray-50 min-h-screen p-4">
+    <div class="bg-white p-6 rounded-lg shadow-md max-w-md w-120 mx-auto">
+        <div class="flex items-center mb-4">
+            <img [src]="restaurantImageUrl" alt="Food image" class="w-16 h-16 rounded-md mr-4">
+            <div>
+                <h2 class="text-xl font-semibold">{{restaurant_name}}</h2>
+                <p class="text-gray-600">Rambagh Colony</p>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <div class="flex items-center justify-between py-2" *ngFor="let item of cart_items">
+                <div class="flex items-center space-x-2">
+                    <div>
+                        <p class="text-lg font-medium text-gray-800">{{item.product.name}}</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center border border-gray-300">
+                    <button (click)="decreaseQuantity(item)"
+                        class="px-2 py-1 text-green-600 hover:text-green-800">-</button>
+                    <span class="px-3 text-green-600 font-semibold">{{item.quantity}}</span>
+                    <button (click)="increaseQuantity(item)"
+                        class="px-2 py-1 text-green-600 hover:text-green-800">+</button>
+                </div>
+                <p class="text-lg font-semibold text-gray-800">₹{{item.product.price * item.quantity}}</p>
+            </div>
+        </div>
+
+        <textarea placeholder="Any suggestions? We will pass it on..."
+            class="w-full border border-gray-300 rounded-md p-2 mb-4 text-sm"></textarea>
+
+        <div class="border border-gray-300 p-4 mb-4">
+            <input type="checkbox" id="no-contact" class="mr-2" (click)="checkBoxChange()">
+            <label for="no-contact" class="text-gray-700 text-sm font-semibold">Opt in for No-contact Delivery</label>
+            <p class="text-xs text-gray-500 mt-1" *ngIf="!checkedBox">
+                Unwell, or avoiding contact? Please select no-contact delivery. Partner will safely place the order
+                outside your door (not for COD)
+            </p>
+            <p class="text-xs text-gray-500 mt-1" *ngIf="checkedBox">
+                Our delivery partner will call to confirm. Please ensure that your address has all the required details.
+            </p>
+        </div>
+
+        <button class="w-full border border-gray-300 p-3 border-dotted text-gray-700 text-left mb-4 flex items-center">
+            <span class="mr-2">%</span>
+            Apply Coupon
+        </button>
+
+        <div class="mb-4">
+            <h3 class="text-lg font-semibold mb-2">Bill Details</h3>
+            <div class="flex justify-between text-gray-700 text-sm mb-1">
+                <span>Item Total</span>
+                <span>₹{{totalPrice | number: '1.2-2'}}</span>
+            </div>
+            <div class="flex justify-between text-gray-700 text-sm mb-1">
+                <span>Delivery Fee | 1.8 kms</span>
+                <span class="line-through text-gray-400">₹0.00</span>
+                <span class="text-green-600">FREE</span>
+            </div>
+            <div class="flex justify-between text-gray-700 text-sm mb-1">
+                <span>Platform fee</span>
+                <span>₹10</span>
+            </div>
+            <div class="flex justify-between text-gray-700 text-sm mb-1">
+                <span>GST and Restaurant Charges</span>
+                <span>₹{{gstTax | number: '1.2-2'}}</span>
+            </div>
+        </div>
+
+        <div class="flex justify-between items-center border-t border-gray-300 pt-2 mt-2">
+            <span class="font-semibold text-lg">TO PAY</span>
+            <span class="font-semibold text-lg">₹{{ (totalPrice + gstTax + 10) | number: '1.2-2' }}</span>
+        </div>
+    </div>
+    <div class="flex justify-center items-center gap-5">
+        <button class="bg-red-600 text-white px-4 py-2 border border-width-6 rounded-md" (click)="clearCart()">
+            Clear
+        </button>
+        <button class="text-white px-4 py-2 border border-width-6 rounded-md" style="background-color: #68b444;"
+            (click)="clearCart()">
+            Proceed
+        </button>
+    </div>
+</div>
